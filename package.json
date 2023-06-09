@@ -1,6 +1,6 @@
 {
-  "name": "tarojs-react-generator",
-  "version": "1.4.1",
+  "name": "tarojs-plugin-react-generator",
+  "version": "1.0.0",
   "description": "Taro 页面/组件创建工具，支持 Taro 3 + React",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
@@ -16,9 +16,10 @@
     "Taro",
     "React"
   ],
-  "repository": "dingff/tarojs-react-generator",
+  "homepage": "FuncWei/tarojs-plugin-react-generator",
+  "repository": "FuncWei/tarojs-plugin-react-generator",
   "authors": [
-    "dingff0923@foxmail.com"
+    "funcwei@163.com"
   ],
   "license": "MIT",
   "files": [

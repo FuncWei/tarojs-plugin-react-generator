@@ -1,14 +1,14 @@
-# tarojs-react-generator
+# tarojs-plugin-react-generator
 
 > Taro 页面/组件创建工具，支持 Taro 3 + React
 
-本项目是基于该项目魔改的:https://github.com/dingff/tarojs-react-generator，解决了一些bug
+本项目是基于该项目魔改的:https://github.com/dingff/tarojs-react-generator  ,解决了一些bug
 
 ## 安装
 
 
 ```bash
-npm install tarojs-react-generator --save-dev
+npm install tarojs-plugin-react-generator --save-dev
 ```
 
 ## 使用
@@ -21,7 +21,7 @@ const config = {
   ...
   plugins: [
     ...
-    ['tarojs-react-generator', {
+    ['tarojs-plugin-react-generator', {
       css: 'sass',
       cssModules: true
     }]
