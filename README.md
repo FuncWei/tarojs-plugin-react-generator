@@ -2,6 +2,8 @@
 
 > Taro 页面/组件创建工具，支持 Taro 3 + React
 
+本项目是基于该项目魔改的:https://github.com/dingff/tarojs-react-generator，解决了一些bug
+
 ## 安装
 
 
