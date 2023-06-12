@@ -65,8 +65,8 @@ const getConfigStr = ({
   } else {
     str = `${createConfigFile === false ? `
 ` : 'export default '}definePageConfig({
-  navigationBarTitleText: '${upperFirst(name)}'
-})
+  navigationBarTitleText: '${upperFirst(name)}',
+});
 `
   }
   return str

@@ -31,7 +31,7 @@ export function getCssModuleClassName(className: string, cssModules: boolean) {
 }
 
 export function getCssImport(cssModules: boolean, cssExt: string) {
-  return `import${cssModules ? ' styles from' : ''} './index${getCssModuleExt(cssModules)}.${cssExt}'`
+  return `import${cssModules ? ' styles from' : ''} './index${getCssModuleExt(cssModules)}.${cssExt}';`
 }
 
 export function createByEjs(path: string, params: object = {}, errMsg: string = '') {
