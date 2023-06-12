@@ -1,5 +1,7 @@
 
 
+## [1.1.1](https://github.com/FuncWei/tarojs-plugin-react-generator/compare/1.1.0...1.1.1) (2023-06-12)
+
 # [1.1.0](https://github.com/FuncWei/tarojs-plugin-react-generator/compare/1.0.8...1.1.0) (2023-06-12)
 
 
