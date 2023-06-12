@@ -101,7 +101,14 @@ const updateRouterList = (appPath: string, page: string, configExt: string, upda
         }
       },
     })
-    const newFile = generator(ast)
+    const newFile = generator(ast, {
+      jsescOption: {
+        minimal: true,
+        escapeEverything: false,
+        wrap: true,
+        es6: true,
+      },
+    })
     fs.writeFileSync(configPath, newFile.code)
   })
 }
