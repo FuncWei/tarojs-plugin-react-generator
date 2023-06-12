@@ -1,5 +1,12 @@
 
 
+# [1.1.0](https://github.com/FuncWei/tarojs-plugin-react-generator/compare/1.0.8...1.1.0) (2023-06-12)
+
+
+### Features
+
+* 读取使用者项目根目录prettier配置进行prettier.format格式化输出 ([114964e](https://github.com/FuncWei/tarojs-plugin-react-generator/commit/114964e7c909b2cce3a2ff260c8915aa8f493e57))
+
 ## [1.0.8](https://github.com/FuncWei/tarojs-plugin-react-generator/compare/1.0.7...1.0.8) (2023-06-12)
 
 
