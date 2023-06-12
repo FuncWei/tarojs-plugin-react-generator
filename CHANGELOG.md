@@ -1,5 +1,12 @@
 
 
+## [1.0.8](https://github.com/FuncWei/tarojs-plugin-react-generator/compare/1.0.7...1.0.8) (2023-06-12)
+
+
+### Bug Fixes
+
+* 调整generator参数 ([ea55238](https://github.com/FuncWei/tarojs-plugin-react-generator/commit/ea552384eace1e4a5cd2b9d3d84573671cd1680c))
+
 ## [1.0.7](https://github.com/FuncWei/tarojs-plugin-react-generator/compare/1.0.6...1.0.7) (2023-06-12)
 
 
