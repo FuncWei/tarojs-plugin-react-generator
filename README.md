@@ -2,7 +2,11 @@
 
 > Taro 页面/组件创建工具，支持 Taro 3 + React
 
-本项目是基于该项目魔改的:https://github.com/dingff/tarojs-react-generator  ,解决了一些bug
+本项目是基于该项目魔改的:https://github.com/dingff/tarojs-react-generator
+解决了一些问题：
+1.生成页面后更新路由配置时查找路径app.config，根据typescript入参动态识别。
+2.通过@babel/generator生成代码文件时，色值jsescOption参数格式化代码。
+3.页面、组件模板语句后面加分号(考虑大多数)，避免eslint报错。
 
 ## 安装
 
