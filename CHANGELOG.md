@@ -1,5 +1,12 @@
 
 
+## [1.0.7](https://github.com/FuncWei/tarojs-plugin-react-generator/compare/1.0.6...1.0.7) (2023-06-12)
+
+
+### Features
+
+* 通过@babel/generator第三个参数来保留源码格式 ([d039d2f](https://github.com/FuncWei/tarojs-plugin-react-generator/commit/d039d2f053832d56e23ec28e8f71ce2925601e63))
+
 ## [1.0.6](https://github.com/FuncWei/tarojs-plugin-react-generator/compare/1.0.5...1.0.6) (2023-06-12)
 
 ## [1.0.5](https://github.com/FuncWei/tarojs-plugin-react-generator/compare/1.0.4...1.0.5) (2023-06-12)
