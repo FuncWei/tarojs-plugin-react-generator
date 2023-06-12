@@ -1,6 +1,14 @@
 import * as fs from 'fs'
 import * as ejs from 'ejs'
+import * as prettier from 'prettier'
 
+// 获取用户项目中的Prettier配置
+const _prettierConfig = prettier.resolveConfig.sync(process.cwd())
+
+// 使用用户项目中的Prettier配置格式化代码
+export function prettierFormat(code: string) {
+  return prettier.format(code, { parser: 'babel', ..._prettierConfig })
+}
 export function upperFirst(str: string) {
   return str.replace(/\b(\w)(\w*)/g, (_$0, $1, $2) => {
     return $1.toUpperCase() + $2

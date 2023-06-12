@@ -41,6 +41,7 @@
     "@types/babel__traverse": "^7.18.3",
     "@types/ejs": "^3.1.2",
     "@types/node": "^18.15.11",
+    "@types/prettier": "^2.7.3",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
@@ -54,10 +55,11 @@
     "father": "^4.1.7",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
+    "prettier": "^2.8.8",
     "release-it": "^15.7.0"
   },
   "dependencies": {
-    "@babel/generator": "^7.21.4",
+    "@babel/generator": "^7.22.5",
     "@babel/parser": "^7.21.4",
     "@babel/traverse": "^7.21.4",
     "@babel/types": "^7.21.4",

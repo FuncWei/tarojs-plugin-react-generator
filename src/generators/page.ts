@@ -5,7 +5,7 @@ import generator from '@babel/generator'
 import traverse from '@babel/traverse'
 import * as t from '@babel/types'
 import { pageTplMap } from './template'
-import { upperFirst, getCssModuleExt, createByEjs } from '../utils'
+import { upperFirst, getCssModuleExt, createByEjs, prettierFormat } from '../utils'
 
 const getPageStr = ({
   pageTpl,
@@ -26,7 +26,7 @@ const getPageStr = ({
   } else {
     str = pageTplMap[hooks ? 'hooks' : 'class']({ name, cssExt, cssModules, configStr, createConfigFile })
   }
-  return str
+  return prettierFormat(str)
 }
 
 const getStyleStr = ({
@@ -61,7 +61,7 @@ const getConfigStr = ({
   if (configTpl) {
     str = createByEjs(path.join(appPath, configTpl), {
       name,
-    }, chalk.red('读取配置模板失败，请检查路径或文件是否正确'))
+    }, chalk.red('⚠️读取配置模板失败，请检查路径或文件是否正确'))
   } else {
     str = `${createConfigFile === false ? `
 ` : 'export default '}definePageConfig({
@@ -69,7 +69,7 @@ const getConfigStr = ({
 });
 `
   }
-  return str
+  return prettierFormat(str)
 }
 
 function writeFileErrorHandler(err:any) {
@@ -95,14 +95,17 @@ const updateRouterList = (appPath: string, page: string, configExt: string, upda
           const newEle = t.stringLiteral(page)
           newEle.extra = {
             rawValue: page,
-            raw: `\n${spaces}'${page}'\n`,
+            raw: `\n${spaces}'${page}',\n`,
           }
           astPath.node.elements.push(newEle)
         }
       },
     })
-    const newFile = generator(ast, {}, data)
-    fs.writeFileSync(configPath, newFile.code)
+
+    // 使用用户项目中的Prettier配置格式化代码
+    const formatCode = prettierFormat(generator(ast).code)
+
+    fs.writeFileSync(configPath, formatCode, 'utf8')
   })
 }
 interface P {
@@ -175,14 +178,14 @@ export function pageGenerator({
     pageStr,
     writeFileErrorHandler,
   )
-  console.log(chalk.black(`创建文件：${path.join(outputDir, `index.${jsExt}`)}`))
+  console.log(chalk.black(`⚙️ 创建文件：${path.join(outputDir, `index.${jsExt}`)}`))
   // 样式
   fs.writeFile(
     path.join(outputDir, `index${getCssModuleExt(cssModules)}.${cssExt}`),
     styleStr,
     writeFileErrorHandler,
   )
-  console.log(chalk.black(`创建文件：${path.join(outputDir, `index${getCssModuleExt(cssModules)}.${cssExt}`)}`))
+  console.log(chalk.black(`⚙️ 创建文件：${path.join(outputDir, `index${getCssModuleExt(cssModules)}.${cssExt}`)}`))
   // 配置
   if (createConfigFile !== false) {
     fs.writeFile(
@@ -190,9 +193,9 @@ export function pageGenerator({
       configStr,
       writeFileErrorHandler,
     )
-    console.log(chalk.black(`创建文件：${path.join(outputDir, `index.config.${configExt}`)}`))
+    console.log(chalk.black(`⚙️ 创建文件：${path.join(outputDir, `index.config.${configExt}`)}`))
   }
   // 更新路由
   updateRouterList(appPath, `pages/${pagePath}/index`, configExt, updateRouter)
-  console.log(chalk.green(`页面「${pageName}」创建成功${updateRouter.enable === false ? '' : '，路由已更新'}`))
+  console.log(chalk.green.bold(`✔ 页面「${pageName}」创建成功${updateRouter.enable === false ? '' : '，路由已更新'}`))
 }
