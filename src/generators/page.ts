@@ -90,12 +90,12 @@ const updateRouterList = (appPath: string, page: string, configExt: string, upda
         if (astPath.parent.key.name === 'pages') {
           astPath.node.elements = astPath.node.elements.filter((item: any) => item.value !== page)
           astPath.node.elements.forEach((item: any) => {
-            item.extra.raw = `\n${spaces}'${item.extra.rawValue}'`
+            item.extra.raw = `\n${spaces}'${item.extra.rawValue}'\n`
           })
           const newEle = t.stringLiteral(page)
           newEle.extra = {
             rawValue: page,
-            raw: `\n${spaces}'${page}'\n`,
+            raw: `\n${spaces}'${page}',\n`,
           }
           astPath.node.elements.push(newEle)
         }
@@ -108,7 +108,7 @@ const updateRouterList = (appPath: string, page: string, configExt: string, upda
         wrap: true,
         es6: true,
       },
-    })
+    }, data)
     fs.writeFileSync(configPath, newFile.code)
   })
 }
