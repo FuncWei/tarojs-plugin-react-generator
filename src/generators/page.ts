@@ -22,7 +22,7 @@ const getPageStr = ({
   if (pageTpl) {
     str = createByEjs(path.join(appPath, pageTpl), {
       name,
-    }, chalk.red('读取页面模板失败，请检查路径或文件是否正确'))
+    }, chalk.red('✘ 读取页面模板失败，请检查路径或文件是否正确'))
   } else {
     str = pageTplMap[hooks ? 'hooks' : 'class']({ name, cssExt, cssModules, configStr, createConfigFile })
   }
@@ -40,7 +40,7 @@ const getStyleStr = ({
     str = createByEjs(path.join(appPath, styleTpl), {
       name,
       isPage: true,
-    }, chalk.red('读取样式模板失败，请检查路径或文件是否正确'))
+    }, chalk.red('✘ 读取样式模板失败，请检查路径或文件是否正确'))
   } else {
     str = `.${name}Page {
   
@@ -61,7 +61,7 @@ const getConfigStr = ({
   if (configTpl) {
     str = createByEjs(path.join(appPath, configTpl), {
       name,
-    }, chalk.red('⚠️读取配置模板失败，请检查路径或文件是否正确'))
+    }, chalk.red('✘ 读取配置模板失败，请检查路径或文件是否正确'))
   } else {
     str = `${createConfigFile === false ? `
 ` : 'export default '}definePageConfig({
@@ -144,7 +144,7 @@ export function pageGenerator({
   const pageName = pagePath.split('/').pop() ?? ''
   const outputDir = path.join(appPath, 'src', 'pages', pagePath)
   if (fs.existsSync(outputDir)) {
-    return console.log(chalk.red('页面已存在'))
+    return console.log(chalk.red('⚡ 页面已存在'))
   }
   fs.mkdirSync(outputDir, { recursive: true })
   const configStr = getConfigStr({

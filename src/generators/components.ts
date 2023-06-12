@@ -22,7 +22,7 @@ const getComStr = ({
   if (componentTpl) {
     str = createByEjs(path.join(appPath, componentTpl), {
       name,
-    }, chalk.red('读取组件模板失败，请检查路径或文件是否正确'))
+    }, chalk.red('⚠️ 读取组件模板失败，请检查路径或文件是否正确'))
   } else {
     str = componentTplMap[hooks ? 'hooks' : 'class']({ name, cssExt, cssModules, typescript })
   }
@@ -40,7 +40,7 @@ const getStyleStr = ({
     str = createByEjs(path.join(appPath, styleTpl), {
       name,
       isPage: false,
-    }, chalk.red('读取样式模板失败，请检查路径或文件是否正确'))
+    }, chalk.red('✘ 读取样式模板失败，请检查路径或文件是否正确'))
   } else {
     str = `.${lowerFirst(name)}Com {
   
@@ -83,7 +83,7 @@ export function componentGenerator({
     // 检测页面是否存在
     const pageDir = path.join(appPath, 'src', 'pages', pagePath)
     if (!fs.existsSync(pageDir)) {
-      return console.log(chalk.red(`页面目录【${pageDir}】不存在，无法创建组件`))
+      return console.log(chalk.red(`✘ 页面目录【${pageDir}】不存在，无法创建组件`))
     }
   }
   const outputDir = path.join(
@@ -95,7 +95,7 @@ export function componentGenerator({
     componentName,
   )
   if (fs.existsSync(outputDir)) {
-    return console.log(chalk.red('组件已存在'))
+    return console.log(chalk.red('⚡ 组件已存在'))
   }
   fs.mkdirSync(outputDir, { recursive: true })
   const comStr = getComStr({
@@ -121,13 +121,13 @@ export function componentGenerator({
     comStr,
     writeFileErrorHandler,
   )
-  console.log(chalk.black(`创建文件：${path.join(outputDir, `index.${jsExt}`)}`))
+  console.log(chalk.black(`⚙️ 创建文件：${path.join(outputDir, `index.${jsExt}`)}`))
   // 样式
   fs.writeFile(
     path.join(outputDir, `index${getCssModuleExt(cssModules)}.${cssExt}`),
     styleStr,
     writeFileErrorHandler,
   )
-  console.log(chalk.black(`创建文件：${path.join(outputDir, `index${getCssModuleExt(cssModules)}.${cssExt}`)}`))
-  console.log(chalk.green(`组件「${componentName}」创建成功`))
+  console.log(chalk.black(`⚙️ 创建文件：${path.join(outputDir, `index${getCssModuleExt(cssModules)}.${cssExt}`)}`))
+  console.log(chalk.green.bold(`✔ 组件「${componentName}」创建成功`))
 }
